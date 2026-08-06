@@ -2,23 +2,13 @@
   "name": "fpl-draft-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "tsx src/deploy-commands.ts",
-    "dev": "tsx src/bot.ts"
+    "build": "tsc",
+    "start": "node dist/bot.js",
+    "dev": "tsx watch src/bot.ts"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "@types/node": "^26.1.2",
-    "dotenv": "^17.4.2",
-    "prisma": "^7.9.1",
-    "tsx": "^4.23.8",
-    "typescript": "^6.0.3"
-  },
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.1",
     "@prisma/client": "^7.9.1",
@@ -28,9 +18,11 @@
     "pino": "^10.3.1",
     "zod": "^4.4.3"
   },
-  "allowScripts": {
-    "prisma@7.9.1": true,
-    "@prisma/engines@7.9.1": true,
-    "esbuild@0.28.1": true
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "dotenv": "^17.4.2",
+    "prisma": "^7.9.1",
+    "tsx": "^4.23.8",
+    "typescript": "^6.0.3"
   }
 }
