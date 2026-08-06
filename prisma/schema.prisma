@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+model Guild {
+  id           String        @id // Discord guild ID
+  plan         String        @default("free") // "free" | "premium" — gancho para planService.ts
+  savedLeagues SavedLeague[]
+  createdAt    DateTime      @default(now())
+}
+
+model SavedLeague {
+  id        String   @id @default(cuid())
+  leagueId  Int
+  guildId   String
+  guild     Guild    @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  addedAt   DateTime @default(now())
+
+  @@unique([guildId, leagueId])
+}
